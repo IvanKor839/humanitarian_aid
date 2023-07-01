@@ -8,12 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.khai.crud.CrudRepositoryHelper;
 import ua.khai.datatable.DataTableRequest;
 import ua.khai.datatable.DataTableResponse;
-import ua.khai.entity.Product;
 import ua.khai.entity.user.Personal;
 import ua.khai.exception.EntityNotFoundException;
 import ua.khai.repository.PersonalRepository;
 import ua.khai.service.PersonalCrudService;
-import ua.khai.service.ProductService;
 
 import java.util.Optional;
 

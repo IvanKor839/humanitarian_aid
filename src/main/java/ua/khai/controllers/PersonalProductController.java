@@ -11,13 +11,10 @@ import ua.khai.datatable.DataTableRequest;
 import ua.khai.datatable.DataTableResponse;
 import ua.khai.dto.response.PageData;
 import ua.khai.dto.response.ProductResponseDto;
-import ua.khai.entity.Addition;
 import ua.khai.facade.ProductFacade;
-import ua.khai.service.AdditionService;
 import ua.khai.util.WebUtil;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/personal/products")

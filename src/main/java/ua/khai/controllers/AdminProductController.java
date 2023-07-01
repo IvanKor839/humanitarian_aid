@@ -2,26 +2,21 @@ package ua.khai.controllers;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ua.khai.datatable.DataTableRequest;
-import ua.khai.datatable.DataTableResponse;
 import ua.khai.dto.request.ProductRequestDto;
 import ua.khai.dto.response.PageData;
 import ua.khai.dto.response.ProductResponseDto;
-import ua.khai.entity.ProductType;
 import ua.khai.facade.ProductFacade;
-import ua.khai.service.ProductTypeService;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin/products")
@@ -40,7 +35,9 @@ public class AdminProductController extends AbstractController{
             new HeaderName("add", null, null)
     };
 
+    @Autowired
     private final ProductFacade productFacade;
+    @Autowired
     private final ProductTypeService productTypeService;
 
     public AdminProductController(ProductFacade productFacade, ProductTypeService productTypeService) {
@@ -72,7 +69,7 @@ public class AdminProductController extends AbstractController{
     }
 
     @PostMapping("/create")
-    public String createNewProduct(RedirectAttributes attributes, @ModelAttribute("product") ProductRequestDto dto, @RequestParam("file") MultipartFile file) {
+    public String createNewProduct(RedirectAttributes attributes, @ModelAttribute("product") ProductRequestDto dto) {
         productFacade.create(dto);
         return "redirect:/admin/products";
     }

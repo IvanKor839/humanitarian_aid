@@ -11,12 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.khai.dto.request.OrderRequestDto;
-import ua.khai.dto.request.ProductRequestDto;
 import ua.khai.dto.response.OrderResponseDto;
 import ua.khai.dto.response.PageData;
-import ua.khai.entity.Card;
 import ua.khai.facade.OrderFacade;
-import ua.khai.service.CardService;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -89,7 +86,7 @@ public class AdminOrderController extends AbstractController{
         try {
             Optional<Card> cards  = cardService.findById(Long.parseLong(id));
             model.addAttribute("cards", cards.get());
-            return "pages/admin/product/product_details";
+            return "pages/card_cheak";
         }catch (NumberFormatException e){
             throw new NumberFormatException("incorrect value id");
         }

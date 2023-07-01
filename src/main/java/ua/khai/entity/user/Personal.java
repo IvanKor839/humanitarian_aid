@@ -21,6 +21,15 @@ public class Personal extends User{
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "adress")
+    private String adress;
+
     @Transient
     private String fullName;
 
@@ -32,6 +41,29 @@ public class Personal extends User{
         setRoleType(RoleType.ROLE_PERSONAL);
     }
 
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Date getBirthDay() {
         return birthDay;
