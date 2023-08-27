@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Create an account</title>
+</head>
+<body>
+
+<div layout:fragment="admin_content">
+    <div class="container">
+        <div class="card mt-4 mb-4">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h3 class="card-title" th:text="${user.getFirstName()}">first_name</h3>
+                    </div>
+                    <div class="col-8">
+                        <h3 class="card-title" th:text="${user.getLastName()}">last_name</h3>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${user.getRoleType().equals('ROLE_ADMIN')}" class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>id</td>
+                        <td th:text="${user.getId()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>created</td>
+                        <td th:text="${#calendars.format(user.getCreated(),'dd MMMM yyyy')}">id</td>
+                    </tr>
+                    <tr>
+                        <td>updated</td>
+                        <td th:text="${#calendars.format(user.getUpdated(),'dd MMMM yyyy')}">id</td>
+                    </tr>
+                    <tr>
+                        <td>visible</td>
+                        <td th:text="${user.getVisible()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td th:text="${user.getEmail()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td th:text="${user.getDescription()}">id</td>
+                    </tr>
+
+                    <tr>
+                        <td>phone</td>
+                        <td th:text="${user.getPhone()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>address</td>
+                        <td th:text="${user.getAdress()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>birthday</td>
+                        <td th:text="${user.getBirthDay()}">id</td>
+                    </tr>
+                </table>
+            </div>
+            <div th:unless="${user.getRoleType().equals(ROLE_ADMIN)}" class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>id</td>
+                        <td th:text="${user.getId()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>created</td>
+                        <td th:text="${#calendars.format(user.getCreated(),'dd MMMM yyyy')}">id</td>
+                    </tr>
+                    <tr>
+                        <td>updated</td>
+                        <td th:text="${#calendars.format(user.getUpdated(),'dd MMMM yyyy')}">id</td>
+                    </tr>
+                    <tr>
+                        <td>visible</td>
+                        <td th:text="${user.getVisible()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td th:text="${user.getEmail()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td th:text="${user.getPhone()}">id</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

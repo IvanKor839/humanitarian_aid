@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Supply</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+    <tr th:each="supply,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${supply.getDonor().getName()}"></td>
+        <td th:text="${supply.getProduct().getName()}"></td>
+        <td th:text="${supply.getCount()}+'шт'"></td>
+        <td>
+            <a th:href="@{'/admin/supplies/delete' + ${supply.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/supplies/new'}" type="button" class="btn btn-danger">add</a>
+        </td>
+    </tr>
+</div>
+
+
+
+</body>
+</html>

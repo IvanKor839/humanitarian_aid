@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Requirement</title>
+</head>
+<body>
+
+<div layout:fragment="admin_content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Requirement</h4>
+                </div>
+                <div class="card-body">
+                    <form  method="post" th:action="@{/admin/requirements/create}" th:object="${requirement}"  enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="personal">Personal</label>
+                            <select class="form-control" id="personal" name="personal" th:field="*{personal}">
+                                <option value="0">select personal</option>
+                                <option th:each="per : ${personals}" th:value="${per.getId()}" th:text="(${per.getFirstName()}+' '+ ${per.getLastName()})"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product">Product</label>
+                            <select class="form-control" id="product" name="product" th:field="*{product}">
+                                <option value="0">select product</option>
+                                <option th:each="prod : ${products}" th:value="${prod.getId()}" th:text="${prod.getName()}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCount">Product count for people</label>
+                            <input type="number" class="form-control" id="productCount" aria-describedby="productCount" placeholder="Enter count" th:field="*{count}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" id="status" aria-describedby="status" placeholder="Enter status" th:field="*{status}">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="Create Product">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

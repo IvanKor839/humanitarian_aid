@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ua.khai.config.security.SecurityService;
-import ua.khai.dto.request.register.AuthDto;
+import ua.khai.entity.user.User;
 import ua.khai.facade.AuthValidatorFacade;
 import ua.khai.facade.RegistrationFacade;
+import ua.khai.repository.UserRepository;
+import ua.khai.service.UserService;
 import ua.khai.type.RoleType;
+import ua.khai.util.AuthDto;
 import ua.khai.util.SecurityUtil;
 
 @Controller
@@ -22,18 +25,21 @@ public class AuthController extends AbstractController {
     private final RegistrationFacade registrationFacade;
     private final AuthValidatorFacade authValidatorFacade;
     private final SecurityService securityService;
+    private final UserRepository userRepository;
 
     public AuthController(
             RegistrationFacade registrationFacade,
             AuthValidatorFacade authValidatorFacade,
-            SecurityService securityService) {
+            SecurityService securityService, UserRepository userRepository) {
         this.registrationFacade = registrationFacade;
         this.authValidatorFacade = authValidatorFacade;
         this.securityService = securityService;
+        this.userRepository = userRepository;
     }
 
+
     @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
+    public String loginGet(Model model, String error, String logout) {
         showMessage(model, false);
         boolean authenticated = securityService.isAuthenticated();
         if (authenticated) {
@@ -44,6 +50,7 @@ public class AuthController extends AbstractController {
                 return "redirect:/personal/dashboard";
             }
         }
+
         if (error != null) {
             showError(model, "Your email and password is invalid.");
         }
@@ -52,7 +59,6 @@ public class AuthController extends AbstractController {
         }
         return "login";
     }
-
 
     @GetMapping("/registration")
     public String registration(Model model) {

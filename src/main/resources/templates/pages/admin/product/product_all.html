@@ -13,13 +13,13 @@
     <tr th:each="product,iter : ${pageData.getItems()}">
         <td th:text="${iter.count}"></td>
         <td>
-            <img th:src="@{${'/img/'+ product.getPicture()}}" width="45" height="45"/>
+            <img th:src="@{${'/img/'+ product.getImage()}}" width="55" height="55"/>
         </td>
-        <td th:text="${product.getProductName()} "></td>
+        <td th:text="${product.getName()} "></td>
         <td th:text="${product.getSize()}"></td>
-        <td th:text="${product.getWeight()}"></td>
-        <td th:text="${#calendars.format(product.getCreated(),'dd MMMM yyyy')}"></td>
-        <td th:text="${product.getPrice()}"></td>
+        <td th:text="${product.getWeight()}+'кг'"></td>
+        <td th:text="${product.getType()}"></td>
+        <td th:text="${product.getCount()}+'шт'"></td>
         <td>
             <a th:href="@{'/admin/products/details' + ${product.getId()}}" type="button" class="btn btn-primary">details</a>
         </td>

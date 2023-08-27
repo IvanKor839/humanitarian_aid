@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Shipment</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+    <tr th:each="shipment,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="(${shipment.getAdmin().getFirstName()} + ' ' + ${shipment.getAdmin().getLastName()})"></td>
+        <td th:text="(${shipment.getPersonal().getFirstName()} + ' ' + ${shipment.getPersonal().getLastName()})"></td>
+        <td th:text="${shipment.getProduct().getName()}"></td>
+        <td th:text="${shipment.getCount()}+'шт'"></td>
+        <td th:text="${#calendars.format(shipment.getCreated(),'dd MMMM yyyy')}"></td>
+        <td>
+            <a th:href="@{'/admin/shipments/delete' + ${shipment.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+    </tr>
+</div>
+
+
+
+</body>
+</html>

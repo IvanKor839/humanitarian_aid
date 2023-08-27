@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пиза</title>
+    <title>Humanitarian Aid</title>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
@@ -27,30 +27,31 @@
     <div class="container col-9 nav_flex" >
         <div class="navigation">
             <a href="../php/index.php">
-                <img class="logo__icon" th:src="@{../../img/logo1.svg}" alt="logo"/>
+                <img class="logo__icon" th:src="@{../../img/aid.png}" alt="logo"/>
             </a>
-            <div class="logo__text">ROSEMARY & THYME</div>
+            <div class="logo__text">HUMANITARIAN AID</div>
         </div>
 
 
         <nav class="navigation" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="navigation__nav">
-                <a class="navigation__link navigation__item" th:href="@{/admin/dashboard}">Dashboard</a>
-                <a class="navigation__link navigation__item" th:href="@{/admin/products}">Products</a>
-                <a class="navigation__link navigation__item" th:href="@{/admin/orders}">Orders</a>
-                <a class="navigation__link navigation__item" th:href="@{/admin/cards}">Cards</a>
-                <a class="navigation__link navigation__item" th:href="@{/admin/personals}">Personals</a>
-                <a href="#footer" class="navigation__link navigation__item">About Us</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/dashboard}">Главная страница</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/products}">Товары</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/donors}">Доноры</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/users}">Пользователи</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/supplies}">Поставки</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/requirements}">Потребности</a>
+                <a class="navigation__link navigation__item" th:href="@{/admin/shipments}">Отгрузки</a>
+                <a href="#footer" class="navigation__link navigation__item">О нас</a>
             </div>
         </nav>
 
         <nav class="navigation" sec:authorize="hasRole('ROLE_PERSONAL')">
             <div class="navigation__nav">
-                <a class="navigation__link navigation__item" th:href="@{/personal/dashboard}">Dashboard</a>
-                <a class="navigation__link navigation__item" th:href="@{/personal/products}">Products</a>
-                <a class="navigation__link navigation__item" th:href="@{/personal/orders}">Orders</a>
-                <a class="navigation__link navigation__item" th:href="@{/personal/cards}">Cards</a>
-                <a href="#footer" class="navigation__link navigation__item">About Us</a>
+                <a class="navigation__link navigation__item" th:href="@{/personal/dashboard}">Главная страница</a>
+                <a class="navigation__link navigation__item" th:href="@{/personal/shipments}">Полученная помощь</a>
+                <a class="navigation__link navigation__item" th:href="@{/personal/requirements}">Потребности</a>
+                <a href="#footer" class="navigation__link navigation__item">О нас</a>
 
             </div>
         </nav>
@@ -63,10 +64,6 @@
         </div>
 
         <div class="navigation">
-            <div class="navigation__item">
-                <a th:href="@{/card}"><button  type="button" class="btns" >Кошик</button></a>
-            </div>
-
             <div class="navigation__item">
                 <a th:href="@{/account}" class="navigation__link"><span sec:authentication="name"></span>&#129313</a>
                 <a onclick="document.forms['logoutForm'].submit()" style="cursor: pointer !important;"> <button class="btns btns__auth">Logout</button> </a>

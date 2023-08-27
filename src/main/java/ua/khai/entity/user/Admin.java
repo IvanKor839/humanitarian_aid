@@ -19,6 +19,10 @@ public class Admin extends User{
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "phone")
+    private String phone;
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -35,4 +39,11 @@ public class Admin extends User{
         this.lastName = lastName;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

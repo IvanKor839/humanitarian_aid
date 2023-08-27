@@ -54,4 +54,9 @@ public class ShipmentsServiceImpl implements ShipmentsService {
     public DataTableResponse<Shipments> findAll(DataTableRequest request) {
         return crudRepositoryHelper.findAll(shipmentsRepository, request);
     }
+
+    @Override
+    public DataTableResponse<Shipments> findAllByPerson(DataTableRequest request, Long id) {
+        return shipmentsRepository.findAllByPersonalId(id);
+    }
 }

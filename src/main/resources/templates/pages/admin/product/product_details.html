@@ -15,10 +15,10 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <img th:src="@{${'/img/'+ product.getPicture()}}" width="180" height="220"/>
+                        <img th:src="@{${'/img/'+ product.getImage()}}" width="180" height="220"/>
                     </div>
                     <div class="col-8">
-                        <h3 class="card-title" th:text="${product.getProductName()} + ' '+ (${product.getSize() ne null} ? ${product.getSize()}+ 'см'  : '')">name</h3>
+                        <h3 class="card-title" th:text="${product.getName()}">name</h3>
                     </div>
                 </div>
             </div>
@@ -45,18 +45,17 @@
                         <td th:text="${product.getWeight()}">id</td>
                     </tr>
                     <tr>
-                        <td>price</td>
-                        <td th:text="${'₴' + product.getPrice()}">id</td>
+                        <td>description</td>
+                        <td th:text="${product.getDescription()}">id</td>
                     </tr>
 
-                    <tr th:if="${product.getProductType() != null}">
+                    <tr>
                         <td>product type</td>
-                        <td>
-                            <a
-                                    th:href="@{'/admin/publishers/' + ${product.getProductType().getId()}}"
-                                    th:text="${product.getProductType().getType()}"
-                                    type="button" class="btn btn-link"></a>
-                        </td>
+                        <td th:text="${product.getType()}">id</td>
+                    </tr>
+                    <tr>
+                        <td>count</td>
+                        <td th:text="${product.getCount()}">id</td>
                     </tr>
                 </table>
             </div>

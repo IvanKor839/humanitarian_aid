@@ -13,6 +13,7 @@ import ua.khai.exception.EntityNotFoundException;
 import ua.khai.repository.PersonalRepository;
 import ua.khai.service.PersonalCrudService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -64,5 +65,10 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
     @Transactional(readOnly = true)
     public DataTableResponse<Personal> findAll(DataTableRequest request) {
         return crudRepositoryHelper.findAll(personalRepository, request);
+    }
+
+    @Override
+    public List<Personal> findAll() {
+        return personalRepository.findAll();
     }
 }

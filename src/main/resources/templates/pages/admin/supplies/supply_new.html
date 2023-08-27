@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Supply</title>
+</head>
+<body>
+
+<div layout:fragment="admin_content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Supply</h4>
+                </div>
+                <div class="card-body">
+                    <form  method="post" th:action="@{/admin/supplies/create}" th:object="${supply}"  enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="donor">Donor</label>
+                            <select class="form-control" id="donor" name="donor" th:field="*{donor}">
+                                <option value="0">select donor</option>
+                                <option th:each="don : ${donors}" th:value="${don.getId()}" th:text="${don.getName()}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product">Product</label>
+                            <select class="form-control" id="product" name="product" th:field="*{product}">
+                                <option value="0">select product</option>
+                                <option th:each="prod : ${products}" th:value="${prod.getId()}" th:text="${prod.getName()}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCount">Product count</label>
+                            <input type="number" class="form-control" id="productCount" aria-describedby="productCount" placeholder="Enter count" th:field="*{count}">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="Create Product">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

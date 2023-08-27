@@ -11,6 +11,7 @@ import ua.khai.entity.Product;
 import ua.khai.repository.ProductRepository;
 import ua.khai.service.ProductService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,5 +53,11 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public DataTableResponse<Product> findAll(DataTableRequest request) {
         return crudRepositoryHelper.findAll(productRepository, request);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 }

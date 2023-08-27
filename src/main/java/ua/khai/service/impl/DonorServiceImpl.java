@@ -12,6 +12,7 @@ import ua.khai.entity.Product;
 import ua.khai.repository.DonorRepository;
 import ua.khai.service.DonorService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,5 +55,11 @@ public class DonorServiceImpl implements DonorService {
     @Transactional(readOnly = true)
     public DataTableResponse<Donor> findAll(DataTableRequest request) {
         return crudRepositoryHelper.findAll(donorRepository, request);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Donor> findAll() {
+        return donorRepository.findAll();
     }
 }

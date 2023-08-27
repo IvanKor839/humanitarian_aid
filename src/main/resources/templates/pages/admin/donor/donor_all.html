@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Donors</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+    <tr th:each="donor,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${donor.getName()} "></td>
+        <td th:text="${donor.getPhone()}"></td>
+        <td th:text="${donor.getAddress()}"></td>
+        <td th:text="${donor.getContactPerson()}"></td>
+        <td>
+            <a th:href="@{'/admin/donors/delete' + ${donor.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/donors/new'}" type="button" class="btn btn-danger">add</a>
+        </td>
+    </tr>
+</div>
+
+
+
+</body>
+</html>

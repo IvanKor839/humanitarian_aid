@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Donor</title>
+</head>
+<body>
+
+<div layout:fragment="admin_content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Donor</h4>
+                </div>
+                <div class="card-body">
+                    <form  method="post" th:action="@{/admin/donors/create}" th:object="${donor}"  enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="donorName">Donor name</label>
+                            <input type="text" class="form-control" id="donorName" aria-describedby="donorName" placeholder="Enter donor name" th:field="*{name}">
+                        </div>
+                        <div class="form-group">
+                            <label for="donorPhone">Donor Phone</label>
+                            <input type="text" class="form-control" id="donorPhone" aria-describedby="donorPhone" placeholder="Enter phone" th:field="*{phone}">
+                        </div>
+                        <div class="form-group">
+                            <label for="donorAddress">Donor Address</label>
+                            <input type="text" class="form-control" id="donorAddress" aria-describedby="donorAddress" placeholder="Enter donor address" th:field="*{address}">
+                        </div>
+                        <div class="form-group">
+                            <label for="donorContact">Donor Contact person</label>
+                            <input type="text" class="form-control" id="donorContact" aria-describedby="donorContact" placeholder="Enter donor contact person" th:field="*{contactPerson}">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="Create Donor">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

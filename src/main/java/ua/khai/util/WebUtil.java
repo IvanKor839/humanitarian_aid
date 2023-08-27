@@ -4,10 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.WebRequest;
 
 import ua.khai.datatable.DataTableRequest;
-import ua.khai.datatable.DataTableResponse;
-import ua.khai.dto.response.PageData;
-import ua.khai.dto.response.ResponseDto;
-import ua.khai.entity.BaseEntity;
 
 public final class WebUtil {
 
@@ -45,7 +41,7 @@ public final class WebUtil {
         return dataTableRequest;
     }
 
-    public static PageData<? extends ResponseDto> initPageData(
+    /*public static PageData<? extends ResponseDto> initPageData(
             DataTableResponse<? extends BaseEntity> tableResponse) {
         PageData<? extends ResponseDto> pageData = new PageData<>();
         pageData.setCurrentPage(tableResponse.getCurrentPage());
@@ -55,5 +51,5 @@ public final class WebUtil {
         pageData.setItemsSize(tableResponse.getItemsSize());
         pageData.initPaginationState();
         return pageData;
-    }
+    }*/
 }

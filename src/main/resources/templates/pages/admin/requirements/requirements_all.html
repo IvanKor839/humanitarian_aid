@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Requirements</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+    <tr th:each="requirement,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="(${requirement.getPersonal().getFirstName()} + ' ' + ${requirement.getPersonal().getLastName()})"></td>
+        <td th:text="${requirement.getProduct().getName()}"></td>
+        <td th:text="${requirement.getCount()}+'шт'"></td>
+        <td th:text="${requirement.getStatus()}"></td>
+        <td>
+            <a th:href="@{'/admin/requirements/ship' + ${requirement.getId()}}" type="button" class="btn btn-danger">create shipment!</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/requirements/delete' + ${requirement.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/requirements/new'}" type="button" class="btn btn-danger">add</a>
+        </td>
+    </tr>
+</div>
+
+
+
+</body>
+</html>

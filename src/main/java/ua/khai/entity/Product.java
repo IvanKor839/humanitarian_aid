@@ -16,13 +16,16 @@ public class Product extends BaseEntity{
     private Integer count;
 
     @Column(name = "weight")
-    private Integer weight;
+    private Double weight;
 
     @Column(name = "size")
-    private Integer size;
+    private String size;
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "image")
+    private String image;
 
     public Product() {
         super();
@@ -52,19 +55,27 @@ public class Product extends BaseEntity{
         this.count = count;
     }
 
-    public Integer getWeight() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    public Integer getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(String size) {
         this.size = size;
     }
 

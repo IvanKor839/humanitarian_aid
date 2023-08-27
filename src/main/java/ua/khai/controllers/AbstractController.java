@@ -7,8 +7,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ua.khai.datatable.DataTableResponse;
 import ua.khai.dto.response.PageData;
 import ua.khai.dto.response.ResponseDto;
+import ua.khai.entity.BaseEntity;
+import ua.khai.entity.Product;
 
 
 import java.util.ArrayList;
@@ -149,7 +152,7 @@ public abstract class AbstractController {
     }
 
     protected void initDataTable(
-            PageData<? extends ResponseDto> response,
+            DataTableResponse<? extends BaseEntity> response,
             HeaderName[] columnNames,
             Model model) {
         List<HeaderData> headerDataList = new ArrayList<>();
@@ -171,6 +174,7 @@ public abstract class AbstractController {
             }
             headerDataList.add(data);
         }
+        for (BaseEntity product: response.getItems())
         model.addAttribute("headerDataList", headerDataList);
         model.addAttribute("pageData", response);
     }
